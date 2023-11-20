@@ -22,17 +22,17 @@
 
             //validation....
             var gender = "";
-            if ($("#RodMale").prop("checked")) {
+            if ($("#RdoMale").prop("checked")) {
                 gender = "M";
 
             }
-            else {
-
+            if ($("#RdoFemale").prop("checked")) {
                 gender = "F";
 
             }
+           
             // save to db
-
+            console.log(gender);
             var obj = {
                 "Id": $("#Id").val(),
                 "ClinicId": $("#ClinicId").val(),
