@@ -216,6 +216,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Iservises\ICasePaper.cs" />
     <Compile Include="Iservises\IClinic.cs" />
     <Compile Include="Iservises\IDoctor.cs" />
     <Compile Include="Iservises\IStaff.cs" />
@@ -242,6 +243,7 @@
       <DependentUpon>Opd.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servises\CasePaperRepo.cs" />
     <Compile Include="Servises\ClinicRepo.cs" />
     <Compile Include="Servises\DoctorRepo.cs" />
     <Compile Include="Servises\StaffRepo.cs" />
