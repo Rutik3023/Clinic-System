@@ -17,47 +17,7 @@
             $("#DoctorModal").hide();
         });
 
-        $("#upload").change(function () {
-            var formData = new FormData();
-            var totalFiles = document.getElementById("upload").files.length;
-            for (var i = 0; i < totalFiles; i++) {
-                var file = document.getElementById("upload").files[i];
-                formData.append("upload", file);
-            }
-            $.ajax({
-                type: "POST",
-                url: '/DoctorApi/Upload',
-                data: formData,
-                dataType: 'json',
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                
-                },
-                error: function(error) {
-                
-                }
-            //}).done(function () {
-            //    alert('success');
-            //}.fail(function (xhr, status, errorThrown) {
-            //    alert('fail');
-            //};
 
-
-                //"url": "/DoctorApi/Upload",
-                //"method": "post",
-                //"contentType": false,
-                //"dataType":"json",
-                //"data": formData,
-
-                //success: function (data) {
-
-                  
-
-                //},
-                //error: function (err) { console.log(err); }
-        });
-    });
         $("#Save").click(function () {
 
             //validation....
@@ -70,9 +30,6 @@
                 gender = "F";
 
             }
-
-            
-
            
             // save to db
             console.log(gender);
@@ -88,11 +45,12 @@
                 "Specilization": $("#Specilization").val(),
                 "Qulification": $("#Qulification").val(),
                 "Role": $("#Role").val(),
-                "Photo":  $("#Photo").val(),
+                "Photo": $("#Photofile").val(),
                 "UserName": $("#UserName").val(),
                 "Password": $("#Password").val()
             };
-           console.log(JSON.stringify(obj));
+
+            console.log(obj);
             $.ajax({
                 "url": "/DoctorApi/Save",
                 "method": "post",
@@ -118,7 +76,7 @@
                     "url": "/DoctorApi/GetAll?key=" + $("#txtSearch").val(),
                     "method": "get",
                     success: function (data) {
-                         
+                        // console.log(data);
                         if (data.Code == 0) {
                             $("#Doctorload").empty();
                             $.each(data.Message, function (index, item) {
@@ -265,7 +223,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                @using (Html.BeginForm("Save", "Doctor", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("Index", "Doctor", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
 
@@ -280,7 +238,7 @@
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.ClinicId, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-12">
-                                                @Html.DropDownListFor(model => model.ClinicId, (IEnumerable<SelectListItem>)ViewBag.Clinic, new { @class = "form-select" })
+                                                @Html.DropDownListFor(model => model.ClinicId, (IEnumerable<SelectListItem>)ViewBag.Clinic,  new { @class = "form-select" } )
                                                 @Html.ValidationMessageFor(model => model.ClinicId, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -361,7 +319,7 @@
                                             @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2 mb-2" })
                                             <div class="col-md-12">
                                                 @*@Html.RadioButtonFor(model => model.Gender,"M", new { htmlAttributes = new { @class = "form-radio me-3", @Name = "rdoMale" } }) Male
-                                        @Html.RadioButtonFor(model => model.Gender,"F", new { htmlAttributes = new { @class = "form-radio me-3", @Name = "rdoFemale" } }) Female*@
+        @Html.RadioButtonFor(model => model.Gender,"F", new { htmlAttributes = new { @class = "form-radio me-3", @Name = "rdoFemale" } }) Female*@
                                                 <input type="radio" id="RdoMale" name="Gender" class="form-radio" value="M" />Male
                                                 <input type="radio" id="RdoFemale" name="Gender" class="form-radio" value="F" />Female
                                                 @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
@@ -393,8 +351,7 @@
                                         <div class="form-group">
                                             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
                                             <div class="col-md-12">
-                                                @*<input type="file" name="Photo" value="" class="form-control" />*@
-                                                <input type="file" id="upload" name="upload" multiple="multiple"  />
+                                                <input type="file" name="Photofile" id="Photofile" class="form-control" />
                                                 @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
                                             </div>
                                         </div>
@@ -405,7 +362,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-12 text-end">
-                                <input type="button" id="Save" value="Save" class="btn btn-success" />
+                                <input type="button" id="Save"  value="Save" class="btn btn-success" />
                             </div>
                         </div>
                     </div>
