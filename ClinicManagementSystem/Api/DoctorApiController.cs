@@ -3,6 +3,7 @@ using ClinicManagementSystem.Iservises;
 using ClinicManagementSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +12,7 @@ namespace ClinicManagementSystem.Api
 {
     public class DoctorApiController : Controller
     {
+         
         // GET: DoctorApi
         // GET: Clinic
         IDoctor c;
@@ -23,7 +25,7 @@ namespace ClinicManagementSystem.Api
             c = _c;
 
         }
-
+       
 
         // GET: Api
 
@@ -60,14 +62,17 @@ namespace ClinicManagementSystem.Api
             rp.Message = list;
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
-
+      
         [HttpPost]
         public JsonResult Save(VMDoctor obj)
-
-        {     
-            
-          
+         {
             Reports rp = new Reports();
+            obj.Photo = rp.Path;
+
+
+
+
+
             tblDoctor list = mp.Map<tblDoctor>(obj);
             var res = c.Save(list);
 
@@ -98,6 +103,39 @@ namespace ClinicManagementSystem.Api
 
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public void Upload()
+        {
+            Reports rp = new Reports();
+            if (Request.Files.Count != 0)
+            {
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+
+                   var fileName = Path.GetFileName(file.FileName);
+                    rp.Path = file.FileName;
+                    var path = Path.Combine(Server.MapPath("~/DoctorPhoto/"), fileName);
+                    file.SaveAs(path);
+
+                    //string path = Server.MapPath("~/DoctorPhoto/");
+                    //file.SaveAs(path + file.FileName);
+                   
+
+
+                    
+
+
+                }
+
+            }
+
+        }
+
+
+
 
         public JsonResult Delete(int id)
         {

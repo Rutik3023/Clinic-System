@@ -13,5 +13,7 @@ namespace ClinicManagementSystem.Api
         public int pageno { get; set; }
 
         public int count { get; set; }
+
+        public string Path { get; set; }
     }
 }
