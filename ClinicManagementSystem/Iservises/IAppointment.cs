@@ -5,13 +5,13 @@ using System.Web;
 
 namespace ClinicManagementSystem.Iservises
 {
-    public interface ICasePaper
+    public interface IAppointment
     {
-        List<tblCasePaper> GetAll();
+        List<tblAppointment> GetAll();
 
-        string Save(tblCasePaper obj);
+        string Save(tblAppointment obj);
 
-        tblCasePaper FindById(int id);
+        tblAppointment FindById(int id);
 
         bool Delete(int id);
 

@@ -5,18 +5,19 @@ using System.Web;
 
 namespace ClinicManagementSystem.Iservises
 {
-    public interface ICasePaper
+    public interface IPatient
     {
-        List<tblCasePaper> GetAll();
+        List<tblPatient> GetAll();
 
-        string Save(tblCasePaper obj);
+        string Save(tblPatient obj);
 
-        tblCasePaper FindById(int id);
+        tblPatient FindById(int id);
 
         bool Delete(int id);
 
         dynamic GetAllKey(string key);
 
-        dynamic GetAllPage(int pageno);
+
+        dynamic GetAllPage(int Pageno);
     }
 }
