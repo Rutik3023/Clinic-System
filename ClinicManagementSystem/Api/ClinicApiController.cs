@@ -86,25 +86,7 @@ namespace ClinicManagementSystem.Api
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public void Upload()
-        {
-
-            if (Request.Files.Count != 0)
-            {
-
-                for (int i = 0; i < Request.Files.Count; i++)
-                {
-                    var file = Request.Files[i];
-
-                    var fileName = Path.GetFileName(file.FileName);
-
-                    var path = Path.Combine(Server.MapPath("~/DoctorPhoto/"), fileName);
-                    file.SaveAs(path);
-                }
-
-            }
-
-        }
+      
 
 
 
