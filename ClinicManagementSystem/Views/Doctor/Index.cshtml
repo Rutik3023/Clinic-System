@@ -118,7 +118,7 @@
                     "url": "/DoctorApi/GetAll?key=" + $("#txtSearch").val(),
                     "method": "get",
                     success: function (data) {
-                        // console.log(data);
+                         
                         if (data.Code == 0) {
                             $("#Doctorload").empty();
                             $.each(data.Message, function (index, item) {
