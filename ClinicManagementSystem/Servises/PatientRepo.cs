@@ -17,7 +17,7 @@ namespace ClinicManagementSystem.Servises
             return obj;
         }
 
-        public string Save(tblPatient obj)
+        public string save(tblPatient obj)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace ClinicManagementSystem.Servises
                     db.tblPatients.Add(List);
                     db.SaveChanges();
 
-                    return "Saved Successfully";
+                    return "Saved ";
 
                 }
                 else

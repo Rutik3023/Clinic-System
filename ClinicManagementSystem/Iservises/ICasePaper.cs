@@ -9,7 +9,7 @@ namespace ClinicManagementSystem.Iservises
     {
         List<tblCasePaper> GetAll();
 
-        string Save(tblCasePaper obj);
+        string save(tblCasePaper obj);
 
         tblCasePaper FindById(int id);
 

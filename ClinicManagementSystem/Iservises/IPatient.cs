@@ -9,7 +9,7 @@ namespace ClinicManagementSystem.Iservises
     {
         List<tblPatient> GetAll();
 
-        string Save(tblPatient obj);
+        string save(tblPatient obj);
 
         tblPatient FindById(int id);
 

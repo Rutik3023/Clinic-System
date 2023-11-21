@@ -19,7 +19,7 @@ namespace ClinicManagementSystem.Servises
 
         
 
-        public string Save(tblCasePaper obj)
+        public string save(tblCasePaper obj)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace ClinicManagementSystem.Servises
                     db.Entry(List).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
 
-                    return "Updated Successfully";
+                    return "Updated ";
                 }
             }
             catch (Exception er)
