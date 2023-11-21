@@ -19,7 +19,7 @@ namespace ClinicManagementSystem.Servises
 
         }
 
-        public string save(tblAppointment obj)
+        public string Save(tblAppointment obj)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace ClinicManagementSystem.Servises
                     db.tblAppointments.Add(List);
                     db.SaveChanges();
 
-                    return "Saved ";
+                    return "Saved Successfully";
 
                 }
                 else
